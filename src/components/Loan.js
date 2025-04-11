@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Loan.css';
 
 function Loan() {
-  const [salary, setSalary] = useState('');
-  const [recommendedLoans, setRecommendedLoans] = useState([]);
+  const [amount, setAmount] = useState('');
+  const [matchedLoans, setMatchedLoans] = useState([]);
+  const [hasSearched, setHasSearched] = useState(false);
+  const navigate = useNavigate();
 
   const allLoans = [
     { type: "Personal Loan", interest: 10.5, maxAmount: "₹5 Lakhs", minSalary: 10000 },
@@ -13,43 +16,59 @@ function Loan() {
   ];
 
   const handleSearch = () => {
-    const salaryAmount = parseInt(salary);
-    if (!isNaN(salaryAmount)) {
-      const filtered = allLoans.filter(loan => salaryAmount >= loan.minSalary);
-      setRecommendedLoans(filtered);
+    const input = parseFloat(amount);
+    setHasSearched(true);
+    if (!isNaN(input)) {
+      const filtered = allLoans.filter(loan => input >= loan.minSalary);
+      setMatchedLoans(filtered);
     } else {
-      setRecommendedLoans([]);
+      setMatchedLoans([]);
     }
+  };
+
+  const handleApply = (loan) => {
+    navigate(`/loan/${encodeURIComponent(loan.type)}`, { state: loan });
   };
 
   return (
     <div className="loan-wrapper">
-      <h2>Loan Recommendation</h2>
+      <h2 className="loan-title">Loan Recommendation</h2>
 
       <div className="search-section">
         <input
           type="number"
-          placeholder="Enter your monthly salary (₹)"
-          value={salary}
-          onChange={(e) => setSalary(e.target.value)}
+          placeholder="Enter your salary (₹)"
+          value={amount}
+          onChange={(e) => setAmount(e.target.value)}
+          className="input-box"
         />
-        <button className="search-btn" onClick={handleSearch}>Search</button>
+        <button onClick={handleSearch} className="search-btn">
+          Search
+        </button>
       </div>
 
-      {recommendedLoans.length > 0 ? (
-        <div className="loan-cards">
-          {recommendedLoans.map((loan, index) => (
-            <div key={index} className="loan-card">
-              <h3>{loan.type}</h3>
-              <p>Interest Rate: {loan.interest}%</p>
-              <p>Max Amount: {loan.maxAmount}</p>
-              <p>Min Salary Required: ₹{loan.minSalary}</p>
-              <button className="apply-btn">Apply Now</button>
+      {hasSearched && (
+        <>
+          <p className="entered-amount">You entered: ₹{amount}</p>
+
+          {matchedLoans.length > 0 ? (
+            <div className="loan-cards">
+              {matchedLoans.map((loan, index) => (
+                <div key={index} className="loan-card">
+                  <h3>{loan.type}</h3>
+                  <p>Interest Rate: {loan.interest}%</p>
+                  <p>Max Amount: {loan.maxAmount}</p>
+                  <p>Min Salary Required: ₹{loan.minSalary}</p>
+                  <button className="apply-btn" onClick={() => handleApply(loan)}>
+                    Apply Now
+                  </button>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      ) : (
-        <p className="no-results">Enter a salary to view recommended loans.</p>
+          ) : (
+            <p className="no-results">No matching loans found for ₹{amount}</p>
+          )}
+        </>
       )}
     </div>
   );
