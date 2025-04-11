@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './Login.css';
 import { useNavigate } from 'react-router-dom';
-import loginBg from '../assets/login-bg.jpg';
+import loginBg from '../assets/LoginBG.jpg';
 
 const Login = () => {
   const [formData, setFormData] = useState({

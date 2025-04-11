@@ -2,7 +2,7 @@
 .login-background {
   height: 100vh;
   width: 100%;
-  background-image: url('../assets/login-bg.jpg');
+  background-image: url('../assets/LoginBG.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
