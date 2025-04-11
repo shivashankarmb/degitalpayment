@@ -1,0 +1,49 @@
+.register-container {
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 30px 40px;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+}
+
+.register-form input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.register-form input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.4);
+}
+
+.register-form button,
+.go-to-login {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.register-form button:hover,
+.go-to-login:hover {
+  background-color: #0056b3;
+}
+
+.go-to-login {
+  background-color: #28a745;
+  margin-top: 10px;
+}
