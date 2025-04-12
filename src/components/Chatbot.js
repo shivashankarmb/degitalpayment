@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import './Chatbot.css';
 import bgImage from '../assets/background.jpg';
 
 // Icons
 import {
   FaMoneyCheckAlt, FaShieldAlt, FaChartLine,
-  FaMoneyBillWave, FaPhoneAlt, FaCog,
-  FaSignOutAlt, FaUser
+  FaPhoneAlt, FaCog, FaSignOutAlt, FaUser
 } from 'react-icons/fa';
 
 const Chatbot = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Initialize the navigate hook
   const [activeTab, setActiveTab] = useState('');
 
   useEffect(() => {
@@ -34,6 +33,11 @@ const Chatbot = () => {
   const handleNavigate = (path, tab) => {
     setActiveTab(tab);
     navigate(path);
+  };
+
+  // Handle Logout - Navigate to Register Page
+  const handleLogout = () => {
+    navigate('/register'); // Redirect to the register page when logged out
   };
 
   return (
@@ -62,12 +66,6 @@ const Chatbot = () => {
           <FaChartLine style={{ marginRight: '8px' }} /> Investments
         </button>
         <button
-          className={`loan-button ${activeTab === 'pay' ? 'active' : ''}`}
-          onClick={() => handleNavigate('/pay', 'pay')}
-        >
-          <FaMoneyBillWave style={{ marginRight: '8px' }} /> Pay
-        </button>
-        <button
           className={`loan-button ${activeTab === 'contact' ? 'active' : ''}`}
           onClick={() => handleNavigate('/contact', 'contact')}
         >
@@ -81,7 +79,7 @@ const Chatbot = () => {
         </button>
         <button
           className={`loan-button ${activeTab === 'logout' ? 'active' : ''}`}
-          onClick={() => handleNavigate('/logout', 'logout')}
+          onClick={handleLogout} // Logout now navigates to register
         >
           <FaSignOutAlt style={{ marginRight: '8px' }} /> Logout
         </button>

@@ -12,6 +12,10 @@ import StockMarketLive from './components/StockMarketLive';
 import LoanDetail from './components/LoanDetails';
 import ApplyLoan from './components/ApplyLoan';
 import InsuranceApp from './components/InsuranceApp';
+import Contact from './components/Contact';
+import Invest from './components/Invest';
+import Settings from './components/Settings';
+
 
 function App() {
   return (
@@ -29,6 +33,13 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/live-market" element={<StockMarketLive />} />
         <Route path="/insurance" element={<InsuranceApp />} /> {/* Renamed for URL consistency */}
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/investments" element={<Invest />} />
+        <Route path="/settings" element={<Settings />} />
+        
+        
+      
+
       </Routes>
     </Router>
   );

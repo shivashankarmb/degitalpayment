@@ -6,14 +6,14 @@ function LoanDetails() {
   const navigate = useNavigate();
 
   const loans = [
-    { bank: "SBI", scheme: "SBI Scholar Loan", rate: "8.15%", tenure: "15 years" },
-    { bank: "PNB", scheme: "PNB Pratibha", rate: "8.45%", tenure: "15 years" },
-    { bank: "Canara Bank", scheme: "Vidya Turant", rate: "6.60%", tenure: "15 years" },
-    { bank: "Bank of Baroda", scheme: "BOB Edu Loan", rate: "8.50%", tenure: "15 years" },
-    { bank: "Union Bank", scheme: "Union Edu Loan", rate: "8.10%", tenure: "7 years" },
-    { bank: "ICICI Bank", scheme: "ICICI Edu Loan", rate: "9.50%", tenure: "12 years" },
-    { bank: "Axis Bank", scheme: "Axis (>7.5L)", rate: "13.70%", tenure: "20 years" },
-    { bank: "HDFC Bank", scheme: "HDFC Edu Loan", rate: "9.00%", tenure: "14 years" },
+    { bank: "SBI", scheme: "SBI Scholar Loan", rate: "8.15", tenure: "15 years" },
+    { bank: "PNB", scheme: "PNB Pratibha", rate: "8.45", tenure: "15 years" },
+    { bank: "Canara Bank", scheme: "Vidya Turant", rate: "6.60", tenure: "15 years" },
+    { bank: "Bank of Baroda", scheme: "BOB Edu Loan", rate: "8.50", tenure: "15 years" },
+    { bank: "Union Bank", scheme: "Union Edu Loan", rate: "8.10", tenure: "7 years" },
+    { bank: "ICICI Bank", scheme: "ICICI Edu Loan", rate: "9.50", tenure: "12 years" },
+    { bank: "Axis Bank", scheme: "Axis (>7.5L)", rate: "13.70", tenure: "20 years" },
+    { bank: "HDFC Bank", scheme: "HDFC Edu Loan", rate: "9.00", tenure: "14 years" },
   ];
 
   const handleApply = (loan) => {

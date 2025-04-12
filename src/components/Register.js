@@ -2,15 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import {
-  FaGoogle,
-  FaGithub,
   FaEye,
-  FaEyeSlash,
-  FaUser,
-  FaPhone,
-  FaMapMarkerAlt,
-  FaEnvelope,
-  FaLock
+  FaEyeSlash
 } from 'react-icons/fa';
 import './Register.css';
 import bgImage from '../assets/bg.jpg';
@@ -69,7 +62,6 @@ const Register = () => {
       const { confirmPassword, ...dataToSend } = formData;
       const response = await axios.post('http://localhost:8080/register', dataToSend);
       
-      // Check if backend sent plain string or JSON
       if (typeof response.data === 'string') {
         if (response.data.includes('successful')) {
           alert('Registration successful! Please log in.');
@@ -109,7 +101,6 @@ const Register = () => {
             </div>
           ))}
 
-          {/* Password */}
           <div className={`form-group ${errors.password ? 'error' : ''}`}>
             <input
               type={showPassword ? 'text' : 'password'}
@@ -128,7 +119,6 @@ const Register = () => {
             {errors.password && <span className="error-text">{errors.password}</span>}
           </div>
 
-          {/* Confirm Password */}
           <div className={`form-group ${errors.confirmPassword ? 'error' : ''}`}>
             <input
               type={showConfirmPassword ? 'text' : 'password'}
